@@ -7,7 +7,7 @@ output:
     theme: spacelab
 ---
 
-# Hi, this a website for me, Juhi Mattekatt!!
+# Hi, this a website for me, Juhi Mattekatt!
 
 I'm an MPH candidate at Columbia Mailman School of Public Health graduating in 2026. My certificate is in Applied Biostatistics and Public Health Data Science. My research interests include food accessibility and food equity.
 
