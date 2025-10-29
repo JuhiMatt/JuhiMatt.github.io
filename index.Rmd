@@ -1,22 +1,13 @@
 ---
-title: "My name is Juhi"
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    theme: spacelab
+title: "Hi, this a website for me, Juhi Mattekatt!"
 ---
-
-# Hi, this a website for me, Juhi Mattekatt!
 
 I'm an MPH candidate at Columbia Mailman School of Public Health graduating in 2026. My certificate is in Applied Biostatistics and Public Health Data Science. My research interests include food accessibility and food equity.
 
-![](/Users/juhimattekatt/Downloads/hw4 img.png)
+<figure style="text-align: center;">
+  <img src="hw4 img.png" style="display: block; margin: 0 auto; width: 75%;">
+  <figcaption>This is me</figcaption>
+</figure>
 
-# Links
 
-Here are some links to me:
-
-* [email](mailto:jm5916@cumc.columbia.edu)
-* [github](https://github.com/JuhiMatt)
-* [Linkedin](https://www.linkedin.com/in/juhi-mattekatt)
+#### Feel free to explore the rest of this site!!

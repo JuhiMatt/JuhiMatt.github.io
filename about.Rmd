@@ -1,0 +1,14 @@
+---
+title: "Resume and Contact"
+---
+
+
+
+
+# Links
+
+Here are some links to me:
+
+* [email](mailto:jm5916@cumc.columbia.edu)
+* [github](https://github.com/JuhiMatt)
+* [Linkedin](https://www.linkedin.com/in/juhi-mattekatt)
