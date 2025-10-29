@@ -3,11 +3,19 @@ output_dir: "."
 navbar:
   title: "Home"
   left:
-    - text: "About"
+    - text: "Resume"
       href: about.html
   right:
-    - icon: fa-github fa-lg
-      href: https://github.com/JuhiMatt
+    - text: "Links"
+      menu:
+          - text: "email"
+            icon: fa-envelope fa-lg
+            href: mailto:jm5916@cumc.columbia.edu
+          - text: "github"
+            icon: fa-github fa-lg
+            href: https://github.com/JuhiMatt
+          - text: "Linkedin"
+            href: https://www.linkedin.com/in/juhi-mattekatt
 output:
   html_document:
     theme: sandstone

@@ -1,14 +1,44 @@
 ---
-title: "Resume and Contact"
+title: "Resume"
+---
+## Juhi Mattekatt 
+
+### Education 
+#### Columbia University Mailman School of Public Health<span style="margin-left: 406px;">May 2026 
+##### Master of Public Health – Epidemiology
+
+* Certificate in Applied Biostatistics and Public Health Data Science
+
+#### University of Western Ontario<span style="margin-left: 598px;">May 2024
+##### Bachelor of Medical Sciences
+
+* Completed a One Health thesis as part of the Honors Specialization Program
+
 ---
 
+### Experience 
+#### HRTP Intern, Shop Healthy NYC!<span style="margin-left: 490px;">June 2025 – present 
+##### New York City Department of Health and Mental Hygiene
 
+* Collected and analyzed neighborhood-level food environment and health data to inform program activities using R, Excel, and ArcGIS. 
+* Delivered community education sessions, tailoring nutrition and health content for diverse audiences.
 
+#### Research Student<span style="margin-left: 579px;">January 2024 – present 
+##### Conducting a systematic review with a team on the validity of prognostic factors reported in orthopedic journals.
 
-# Links
+* Synthesized and communicated complex research findings to peers and faculty, developing clear explanations of prognostic material.  
+*	Presented poster with preliminary results at EpiBio Research Day 2024, Western University.
+*	Manuscript is currently in progress.
 
-Here are some links to me:
+#### Student Library Assistant<span style="margin-left: 505px;">August 2021 – April 2024
+##### Allyn & Betty Taylor Library, Western Libraries 
 
-* [email](mailto:jm5916@cumc.columbia.edu)
-* [github](https://github.com/JuhiMatt)
-* [Linkedin](https://www.linkedin.com/in/juhi-mattekatt)
+*	Managed inquiries related to library policies, events, and services.
+*	Maintained and retrieved library collections.
+*	Provided guidance to students and faculty on effective use of databases and library resources. 
+
+---
+
+### Skills and Additional Professional Training
+#### Data Analysis and Statistics: SQL, SAS, R, Excel, SUDAAN
+
