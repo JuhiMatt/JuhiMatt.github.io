@@ -16,7 +16,7 @@ library(plotly)
 data("instacart") #load data in 
 ```
 
-Column {data-width=650}
+Column {data-width=500}
 -----------------------------------------------------------------------
 
 ### Bar Graph: How many aisles are in each department?
@@ -27,15 +27,35 @@ aisles <- instacart %>%
   group_by(department) %>%
   summarise(n_aisles = n_distinct(aisle)) %>% #count number of aisles in each department
   mutate(department = fct_reorder(department, n_aisles)) %>% #order by number of aisles
-  plot_ly(x = ~department, y = ~n_aisles, color = ~department, type = "bar", colors = "plasma") %>% #plot
+  plot_ly(y = ~department, x = ~n_aisles, color = ~department, type = "bar", colors = "plasma") %>% #plot
   layout(
     title = "Number of Aisles per Department",
-    xaxis = list(title = "Department Name"),
-    yaxis = list(title = "Number of Aisles"))
+    yaxis = list(title = "Department Name", ticklabelpadding = 10),
+    xaxis = list(title = "Number of Aisles"))
+
+aisles
 ```
 
-Column {data-width=350}
+Column {data-width=500}
 -----------------------------------------------------------------------
+
+### Box Plot: What is the median (with distribution) number of items per order each day of the week?
+
+```{r}
+med_items_day <- instacart %>%
+  group_by(order_dow, order_id) %>% 
+  summarise(n_items = n(), .groups = 'drop') %>% #count number of items per order
+  plot_ly(x = ~order_dow, y = ~n_items,  type = 'box', boxmean = TRUE, color = ~factor(order_dow), colors = "viridis") %>% 
+  layout(
+    title = "Median Number of Items Per Order by Day of Week",
+    xaxis = list(title = "Day",
+      tickvals = 0:6,
+      ticktext = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")),
+    yaxis = list(title = "Number of Items"),
+    showlegend = FALSE) #remove legend
+
+med_items_day
+```
 
 ### Line Graph: How do number of orders placed differ throughout the day
 
@@ -54,21 +74,6 @@ order_hrs <- instacart %>%
       ticktext = paste0(seq(0, 23, by = 2), ":00"), #add :00 to each hour
       tickangle = 30),
     yaxis = list(title = "Number of Orders"))
+
+order_hrs
 ```
-
-### Box Plot: What is the median (with distribution) number of items per order each day of the week?
-
-```{r}
-instacart %>%
-  group_by(order_dow, order_id) %>% 
-  summarise(n_items = n(), .groups = 'drop') %>% #count number of items per order
-  plot_ly(x = ~order_dow, y = ~n_items,  type = 'box', boxmean = TRUE, color = ~factor(order_dow), colors = "viridis") %>% 
-  layout(
-    title = "Median Number of Items Per Order by Day of Week",
-    xaxis = list(title = "Day",
-      tickvals = 0:6,
-      ticktext = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")),
-    yaxis = list(title = "Number of Items"), 
-    showlegend = FALSE) #remove legend
-```
-
