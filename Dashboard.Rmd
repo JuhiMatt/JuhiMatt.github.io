@@ -5,7 +5,6 @@ output:
     orientation: columns
     vertical_layout: fill
 ---
-
 ```{r setup, include=FALSE}
 library(flexdashboard)
 
@@ -15,6 +14,7 @@ library(plotly)
 
 data("instacart") #load data in 
 ```
+These graphs use Instacart data
 
 Column {data-width=500}
 -----------------------------------------------------------------------
@@ -28,9 +28,9 @@ aisles <- instacart %>%
   summarise(n_aisles = n_distinct(aisle)) %>% #count number of aisles in each department
   mutate(department = fct_reorder(department, n_aisles)) %>% #order by number of aisles
   plot_ly(y = ~department, x = ~n_aisles, color = ~department, type = "bar", colors = "plasma") %>% #plot
-  layout(
+  layout( #add titles
     title = "Number of Aisles per Department",
-    yaxis = list(title = "Department Name", ticklabelpadding = 10),
+    yaxis = list(title = "Department Name"),
     xaxis = list(title = "Number of Aisles"))
 
 aisles
@@ -45,12 +45,12 @@ Column {data-width=500}
 med_items_day <- instacart %>%
   group_by(order_dow, order_id) %>% 
   summarise(n_items = n(), .groups = 'drop') %>% #count number of items per order
-  plot_ly(x = ~order_dow, y = ~n_items,  type = 'box', boxmean = TRUE, color = ~factor(order_dow), colors = "viridis") %>% 
+  plot_ly(x = ~order_dow, y = ~n_items,  type = 'box', boxmean = TRUE, color = ~factor(order_dow), colors = "viridis") %>% #plot
   layout(
     title = "Median Number of Items Per Order by Day of Week",
     xaxis = list(title = "Day",
       tickvals = 0:6,
-      ticktext = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")),
+      ticktext = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")), #replace numbers with days
     yaxis = list(title = "Number of Items"),
     showlegend = FALSE) #remove legend
 
@@ -70,7 +70,7 @@ order_hrs <- instacart %>%
   layout(
     title = "Number of Orders by Hour",
     xaxis = list(title = "Hour of Day",
-      tickvals = seq(0, 23, by = 2),
+      tickvals = seq(0, 23, by = 2), #go by every 2 hrs
       ticktext = paste0(seq(0, 23, by = 2), ":00"), #add :00 to each hour
       tickangle = 30),
     yaxis = list(title = "Number of Orders"))
