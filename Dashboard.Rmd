@@ -1,0 +1,74 @@
+---
+title: "Problem 2"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+
+data("instacart") #load data in 
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Bar Graph: How many aisles are in each department?
+
+```{r}
+aisles <- instacart %>% 
+  filter(department != "missing" & aisle != "missing") %>% #filter out any missing depts or aisles 
+  group_by(department) %>%
+  summarise(n_aisles = n_distinct(aisle)) %>% #count number of aisles in each department
+  mutate(department = fct_reorder(department, n_aisles)) %>% #order by number of aisles
+  plot_ly(x = ~department, y = ~n_aisles, color = ~department, type = "bar", colors = "plasma") %>% #plot
+  layout(
+    title = "Number of Aisles per Department",
+    xaxis = list(title = "Department Name"),
+    yaxis = list(title = "Number of Aisles"))
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Line Graph: How do number of orders placed differ throughout the day
+
+```{r}
+order_hrs <- instacart %>% 
+  distinct(order_id, order_hour_of_day) %>% #make sure orders are only counted once
+  group_by(order_hour_of_day) %>%
+  summarise(n_order = n()) %>% #find number of orders 
+  plot_ly(x = ~order_hour_of_day, y = ~n_order, type = 'scatter', mode = 'lines+markers', #plot
+    line = list(color = 'orange', width = 3),
+    marker = list(color = 'black', size = 8)) %>% 
+  layout(
+    title = "Number of Orders by Hour",
+    xaxis = list(title = "Hour of Day",
+      tickvals = seq(0, 23, by = 2),
+      ticktext = paste0(seq(0, 23, by = 2), ":00"), #add :00 to each hour
+      tickangle = 30),
+    yaxis = list(title = "Number of Orders"))
+```
+
+### Box Plot: What is the median (with distribution) number of items per order each day of the week?
+
+```{r}
+instacart %>%
+  group_by(order_dow, order_id) %>% 
+  summarise(n_items = n(), .groups = 'drop') %>% #count number of items per order
+  plot_ly(x = ~order_dow, y = ~n_items,  type = 'box', boxmean = TRUE, color = ~factor(order_dow), colors = "viridis") %>% 
+  layout(
+    title = "Median Number of Items Per Order by Day of Week",
+    xaxis = list(title = "Day",
+      tickvals = 0:6,
+      ticktext = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")),
+    yaxis = list(title = "Number of Items"), 
+    showlegend = FALSE) #remove legend
+```
+

@@ -5,6 +5,8 @@ navbar:
   left:
     - text: "Resume"
       href: about.html
+    - text: "Dashboard"
+      href: Dashboard.html
   right:
     - text: "Links"
       menu:
